@@ -43,7 +43,7 @@ def aplname_from_code(code):
     return APL_name
 
 Template_ids= configs.Template_ids
-Unsub_ids= configs.Unsub_ids
+Unsub_ids = configs.Unsub_ids
 Topics= configs.Topics
 #Topics= ["sedin","buget", "licita", "achiz"]
 Filters = configs.Filters
@@ -78,7 +78,6 @@ def decision_send(topic_index):
             if not condition_topic:
                 continue
 
-
             #If emails were sent of the return_last_by_keyword_list_urls
             List_URLs_OF_interest = return_last_by_keyword_list_urls(cod, Filters[topic_index], limit= 200)
             for rsal_url_interest in List_URLs_OF_interest:
@@ -87,9 +86,6 @@ def decision_send(topic_index):
                 email_url_aplcod_announced_check = useremail_url_aplcod_check_channel_announcement(user_email, rsal_url_interest , aplcod=cod, channel_type="email")
                 #IF URL was not sent, check if user wants email
                 if not email_url_aplcod_announced_check:
-                        
-
-
 
                     #If user IS interested in email, send email
                     condition_channel_email = "email" in utf(user_interests["channel"].lower())
@@ -194,8 +190,8 @@ def decision_send(topic_index):
 
                 #condition_channel_sms = "sms" in utf(user_interests["channel"].lower())
     
-
-    Report_Text = f"Sent {Report_Emails} emails, {Report_Telegram} telegram, {Report_Telegram_Inregistrare} telegram promo about >>{Topics[topic_index]}<<"
-    Send_Telegram_Message(configs.Telegram_Constantin, Report_Text)
+    if (Report_Emails>0) or (Report_Telegram)>0:
+        Report_Text = f"Sent {Report_Emails} emails, {Report_Telegram} telegram, {Report_Telegram_Inregistrare} telegram promo about >>{Topics[topic_index]}<<"
+        Send_Telegram_Message(configs.Telegram_Constantin, Report_Text)
 
 
