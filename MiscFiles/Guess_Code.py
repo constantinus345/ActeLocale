@@ -12,9 +12,6 @@ def aplname_from_code(code):
     APL_name = APL_List_all[cod_index]
     return APL_name
 
-
-
-
 def guessing_apl(name):
     Close_Match= get_close_matches(name, APL_List_all, n=2, cutoff=0.1)[0]
     return [Close_Match, APL_Code_all[APL_List_all.index(Close_Match)]]

@@ -1,14 +1,8 @@
 import configs
 import pandas as pd
 import re
-from PDFs_Download import list_from_urls_docs_str, download_pdf_rsal_list
 
 enginex = configs.engine
-
-
-with enginex.connect() as conn:
-    print(conn)
-    print(type(conn))
 
 def insert_df_data(dfx, table, engine = enginex, if_exists="append"):
     with engine.connect() as conn:
