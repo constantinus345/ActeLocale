@@ -53,12 +53,12 @@ def download_pdf_rsal_list(urls_docs, string=False, Folder= configs.Folder_PDFs)
             File_PDF=f'{Folder}/{pdf}.pdf'
             if f"{pdf}.pdf" not in Files:
                 download( Disp_PDF, File_PDF)
+                PDFs_Paths.append(pdf)
                 print(f"downloaded {pdf} /remaining {len(urls_docs)- urls_docs.index(pdf)} out of {len(urls_docs)}")
             else:
                 pass
                 print(f"already there {pdf}")
             
-            PDFs_Paths.append(pdf)
     except Exception as e:
         print(e)
     

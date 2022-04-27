@@ -17,7 +17,6 @@ dfx= df[["email_address","user_fullname", "Bad? ", "phone"]]
 dfx = dfx[dfx["Bad? "]==1]
 """
 
-
 def emails_from_response_dict_filtered(dict_list, str_filter_list):
     
     Emails_to_process= []
