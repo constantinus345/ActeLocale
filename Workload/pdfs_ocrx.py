@@ -21,9 +21,9 @@ def main():
     Folder_TXTs_vpoppler = f"{Folder_TXTs}_vpoppler"
 
     Files_PDFs= ocr_funcs.files(configs.Folder_PDFs_noannons)
-    Files_TXTs= ocr_funcs.files(configs.Folder_TXTs)
-    Files_TXTs_vfitz = listdir(Folder_TXTs_vfitz)
-    Files_TXTs_vpoppler = listdir(Folder_TXTs_vpoppler)
+    Files_TXTs= set(ocr_funcs.files(configs.Folder_TXTs))
+    Files_TXTs_vfitz = set(listdir(Folder_TXTs_vfitz))
+    Files_TXTs_vpoppler = set(listdir(Folder_TXTs_vpoppler))
 
     Done= 0
     for pdfx in Files_PDFs:

@@ -8,12 +8,11 @@ def insert_df_data(dfx, table, engine = enginex, if_exists="append"):
     with engine.connect() as conn:
         dfx.to_sql(f'{table}', con=conn, if_exists = if_exists, index=False)
 
-def codesrsal (engine= enginex):
+def codesrsal (engine = enginex):
     with engine.connect() as conn:
         df_codes = pd.read_sql("SELECT * FROM public.codes", con=conn)
     list_codes = df_codes["cod"].tolist()
     return list_codes
-
 
 def codes_users_unique (engine=enginex, table= configs.Table_Users_Registered):
     """

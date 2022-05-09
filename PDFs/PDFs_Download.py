@@ -9,9 +9,8 @@ print(rdm(0.1,0.3))
 
 
 def list_from_urls_docs_str(urls_docs_str):
-    urls_docs_lis = [x.replace(" ","") for x in str(urls_docs_str).split(",")]
+    urls_docs_lis = set([x.replace(" ","") for x in str(urls_docs_str).split(",")])
     return urls_docs_lis
-
 
 
 def download_pdf_rsal_one(relative_url_pdf, Folder= configs.Folder_PDFs):

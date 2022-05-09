@@ -13,7 +13,7 @@ import os
 from unidecode import unidecode as utf
 from Telegram_funcs import Send_Telegram_Message
 
-engine= configs.engine
+enginex= configs.engine
 
 #1 from txt to json
 #every day, remove duplicate
@@ -75,23 +75,24 @@ def iterate_and_insert_postgres(token= configs.Telegram_Token, collection= confi
             updateid= document["update_id"]
             userid= document["message"]["from"]["id"]
             message = document["message"]["text"]
-        except:
+            #print(message)
+        except Exception as e:
+            #print(e)
             message=""
 
-        if (message != "") and ("@" in str(message)) and (updateid not in List_Updates_DB):
+        if (message != "") and (updateid not in List_Updates_DB):
             Cols_Mongo_Telegram_Text = configs.Cols_Mongo_Telegram_Text
             Data_Mongo_Telegram_Text = [updateid, userid,message]
             dictx= dict(zip(Cols_Mongo_Telegram_Text, Data_Mongo_Telegram_Text))
+            #print(dictx)
             dfx = pd.DataFrame(dictx, index=[0])
             #= ["updateid", "userid", "message"]
-            insert_df_data(dfx, engine, configs.Table_Mongo_Text, if_exists="replace")
+            insert_df_data(dfx, configs.Table_Mongo_Text)
             Report_Mongo_Email_Postgres += 1
             print(f"Inserted {Data_Mongo_Telegram_Text}")
 
     if Report_Mongo_Email_Postgres > 0:
-        Send_Telegram_Message(configs.Telegram_Constantin, f"Inserted {Report_Mongo_Email_Postgres} emails @-in-message to postgress")
-
-
+        Send_Telegram_Message(configs.Telegram_Constantin, f"Inserted {Report_Mongo_Email_Postgres} texts @-in-message to postgress")
 
 
 

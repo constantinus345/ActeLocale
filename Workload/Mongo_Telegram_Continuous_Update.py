@@ -1,5 +1,5 @@
 from Mongo_Telegram import insert_all_telegram_to_mongo, iterate_and_insert_postgres
-from DB_funcs import remove_duplicates, engine
+from DB_funcs import remove_duplicates
 from configs import Table_Mongo_Text
 
 

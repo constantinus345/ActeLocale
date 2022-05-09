@@ -6,6 +6,8 @@ import os
 import configs
 import fitz
 
+Image.MAX_IMAGE_PIXELS = 178956970*5
+
 def files(Folder):
     for (dirpath, dirnames, filenames) in os.walk(Folder):
         files= filenames
